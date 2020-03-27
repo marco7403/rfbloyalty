@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/marco7403/rfbloyalty.svg?style=svg&circle-token=b13714661c40b358f73e11dec7a6dea8ded3c4c0)](https://circleci.com/gh/marco7403/rfbloyalty)
+
 # rfbloyalty
 
 This application was generated using JHipster 6.8.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.8.0](https://www.jhipster.tech/documentation-archive/v6.8.0).
