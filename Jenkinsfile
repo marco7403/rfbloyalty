@@ -1,10 +1,6 @@
 #!/usr/bin/env groovy
 
 node {
-    stage('checkout') {
-        checkout scm
-    }
-
     gitlabCommitStatus('build') {
         docker.image('jhipster/jhipster:v6.8.0').inside('-u jhipster -e MAVEN_OPTS="-Duser.home=./"') {
             stage('check java') {
