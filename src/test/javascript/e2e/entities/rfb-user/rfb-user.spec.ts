@@ -40,7 +40,7 @@ describe('RfbUser e2e test', () => {
 
     await rfbUserComponentsPage.clickOnCreateButton();
 
-    await promise.all([rfbUserUpdatePage.setUserNameInput('userName')]);
+    await promise.all([rfbUserUpdatePage.setUserNameInput('userName'), rfbUserUpdatePage.rfbUserSelectLastOption()]);
 
     expect(await rfbUserUpdatePage.getUserNameInput()).to.eq('userName', 'Expected UserName value to be equals to userName');
 

@@ -31,7 +31,6 @@ export class RfbEventAttendanceUpdatePage {
 
   eventAttendanceInput = element(by.id('field_eventAttendance'));
 
-  rfbUserSelect = element(by.id('field_rfbUser'));
   rfbEventSelect = element(by.id('field_rfbEvent'));
   rfbUserSelect = element(by.id('field_rfbUser'));
 
@@ -45,25 +44,6 @@ export class RfbEventAttendanceUpdatePage {
 
   async getEventAttendanceInput(): Promise<string> {
     return await this.eventAttendanceInput.getAttribute('value');
-  }
-
-  async rfbUserSelectLastOption(): Promise<void> {
-    await this.rfbUserSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async rfbUserSelectOption(option: string): Promise<void> {
-    await this.rfbUserSelect.sendKeys(option);
-  }
-
-  getRfbUserSelect(): ElementFinder {
-    return this.rfbUserSelect;
-  }
-
-  async getRfbUserSelectedOption(): Promise<string> {
-    return await this.rfbUserSelect.element(by.css('option:checked')).getText();
   }
 
   async rfbEventSelectLastOption(): Promise<void> {

@@ -8,12 +8,6 @@
     -->
     <changeSet id="20200330153600-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="rfb_user_id"
-                                 baseTableName="rfb_event_attendance"
-                                 constraintName="fk_rfb_event_attendance_rfb_user_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="rfb_user"/>
-
         <addForeignKeyConstraint baseColumnNames="rfb_event_id"
                                  baseTableName="rfb_event_attendance"
                                  constraintName="fk_rfb_event_attendance_rfb_event_id"

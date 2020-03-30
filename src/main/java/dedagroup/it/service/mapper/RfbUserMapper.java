@@ -9,10 +9,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link RfbUser} and its DTO {@link RfbUserDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {RfbLocationMapper.class})
 public interface RfbUserMapper extends EntityMapper<RfbUserDTO, RfbUser> {
 
+    @Mapping(source = "rfbUser.id", target = "rfbUserId")
+    RfbUserDTO toDto(RfbUser rfbUser);
 
+    @Mapping(source = "rfbUserId", target = "rfbUser")
     @Mapping(target = "rfbEventAttendances", ignore = true)
     @Mapping(target = "removeRfbEventAttendance", ignore = true)
     RfbUser toEntity(RfbUserDTO rfbUserDTO);

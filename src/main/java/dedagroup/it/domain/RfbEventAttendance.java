@@ -27,10 +27,6 @@ public class RfbEventAttendance implements Serializable {
     @Column(name = "event_attendance")
     private LocalDate eventAttendance;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private RfbUser rfbUser;
-
     @ManyToOne
     @JsonIgnoreProperties("rfbEventAttendances")
     private RfbEvent rfbEvent;
@@ -59,19 +55,6 @@ public class RfbEventAttendance implements Serializable {
 
     public void setEventAttendance(LocalDate eventAttendance) {
         this.eventAttendance = eventAttendance;
-    }
-
-    public RfbUser getRfbUser() {
-        return rfbUser;
-    }
-
-    public RfbEventAttendance rfbUser(RfbUser rfbUser) {
-        this.rfbUser = rfbUser;
-        return this;
-    }
-
-    public void setRfbUser(RfbUser rfbUser) {
-        this.rfbUser = rfbUser;
     }
 
     public RfbEvent getRfbEvent() {

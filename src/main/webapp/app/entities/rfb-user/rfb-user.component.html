@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col" ><span>ID</span></th>
                     <th scope="col" ><span>User Name</span></th>
+                    <th scope="col" ><span>Rfb User</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -31,6 +32,11 @@
                 <tr *ngFor="let rfbUser of rfbUsers ;trackBy: trackId">
                     <td><a [routerLink]="['/rfb-user', rfbUser.id, 'view']">{{ rfbUser.id }}</a></td>
                     <td>{{ rfbUser.userName }}</td>
+                    <td>
+                        <div *ngIf="rfbUser.rfbUserId">
+                            <a [routerLink]="['/rfb-location', rfbUser.rfbUserId , 'view']" >{{ rfbUser.rfbUserId }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
