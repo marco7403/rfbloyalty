@@ -26,8 +26,9 @@ relationship OneToOne {
     RfbUser {locationName} to RfbLocation
 }
 
-dto * with mapstruct;
-service * all with serviceImpl;
 
-paginate RfbLocation, RfbEvent with pagination;
-paginate RfbEventAttendance with infinite-scroll;
+dto * with mapstruct
+service * with serviceImpl
+
+paginate RfbLocation, RfbEvent with pagination
+paginate RfbEventAttendance with infinite-scroll
