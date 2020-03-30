@@ -23,13 +23,15 @@ export class RfbEventAttendanceUpdateComponent implements OnInit {
   isSaving = false;
   rfbusers: IRfbUser[] = [];
   rfbevents: IRfbEvent[] = [];
+  rfbusers: IRfbUser[] = [];
   eventAttendanceDp: any;
 
   editForm = this.fb.group({
     id: [],
     eventAttendance: [],
     rfbUserId: [],
-    rfbEventId: []
+    rfbEventId: [],
+    rfbUserId: []
   });
 
   constructor(
@@ -67,6 +69,8 @@ export class RfbEventAttendanceUpdateComponent implements OnInit {
         });
 
       this.rfbEventService.query().subscribe((res: HttpResponse<IRfbEvent[]>) => (this.rfbevents = res.body || []));
+
+      this.rfbUserService.query().subscribe((res: HttpResponse<IRfbUser[]>) => (this.rfbusers = res.body || []));
     });
   }
 
@@ -75,7 +79,8 @@ export class RfbEventAttendanceUpdateComponent implements OnInit {
       id: rfbEventAttendance.id,
       eventAttendance: rfbEventAttendance.eventAttendance,
       rfbUserId: rfbEventAttendance.rfbUserId,
-      rfbEventId: rfbEventAttendance.rfbEventId
+      rfbEventId: rfbEventAttendance.rfbEventId,
+      rfbUserId: rfbEventAttendance.rfbUserId
     });
   }
 
@@ -99,7 +104,8 @@ export class RfbEventAttendanceUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       eventAttendance: this.editForm.get(['eventAttendance'])!.value,
       rfbUserId: this.editForm.get(['rfbUserId'])!.value,
-      rfbEventId: this.editForm.get(['rfbEventId'])!.value
+      rfbEventId: this.editForm.get(['rfbEventId'])!.value,
+      rfbUserId: this.editForm.get(['rfbUserId'])!.value
     };
   }
 

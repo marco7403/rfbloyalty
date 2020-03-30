@@ -50,6 +50,7 @@ public class CacheConfiguration {
             createCache(cm, dedagroup.it.domain.RfbEvent.class.getName() + ".rfbEventAttendances");
             createCache(cm, dedagroup.it.domain.RfbEventAttendance.class.getName());
             createCache(cm, dedagroup.it.domain.RfbUser.class.getName());
+            createCache(cm, dedagroup.it.domain.RfbUser.class.getName() + ".rfbEventAttendances");
             // jhipster-needle-ehcache-add-entry
         };
     }

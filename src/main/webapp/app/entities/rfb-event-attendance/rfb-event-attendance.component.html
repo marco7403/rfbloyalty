@@ -26,6 +26,7 @@
                     <th scope="col"  jhiSortBy="eventAttendance"><span>Event Attendance</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="rfbUserId"><span>Rfb User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="rfbEventId"><span>Rfb Event</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rfbUserId"><span>Rfb User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -41,6 +42,11 @@
                     <td>
                         <div *ngIf="rfbEventAttendance.rfbEventId">
                             <a [routerLink]="['/rfb-event', rfbEventAttendance.rfbEventId , 'view']" >{{ rfbEventAttendance.rfbEventId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="rfbEventAttendance.rfbUserId">
+                            <a [routerLink]="['/rfb-user', rfbEventAttendance.rfbUserId , 'view']" >{{ rfbEventAttendance.rfbUserId }}</a>
                         </div>
                     </td>
                     <td class="text-right">

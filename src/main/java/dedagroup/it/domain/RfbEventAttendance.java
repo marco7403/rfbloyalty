@@ -35,6 +35,10 @@ public class RfbEventAttendance implements Serializable {
     @JsonIgnoreProperties("rfbEventAttendances")
     private RfbEvent rfbEvent;
 
+    @ManyToOne
+    @JsonIgnoreProperties("rfbEventAttendances")
+    private RfbUser rfbUser;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -81,6 +85,19 @@ public class RfbEventAttendance implements Serializable {
 
     public void setRfbEvent(RfbEvent rfbEvent) {
         this.rfbEvent = rfbEvent;
+    }
+
+    public RfbUser getRfbUser() {
+        return rfbUser;
+    }
+
+    public RfbEventAttendance rfbUser(RfbUser rfbUser) {
+        this.rfbUser = rfbUser;
+        return this;
+    }
+
+    public void setRfbUser(RfbUser rfbUser) {
+        this.rfbUser = rfbUser;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
