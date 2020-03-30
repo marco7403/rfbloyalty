@@ -1,10 +1,10 @@
 
-  ${AnsiColor.GREEN}      ██╗${AnsiColor.RED} ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝
-  ${AnsiColor.GREEN}██╗   ██║${AnsiColor.RED} ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║
-  ${AnsiColor.GREEN}╚██████╔╝${AnsiColor.RED} ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗
-  ${AnsiColor.GREEN} ╚═════╝ ${AnsiColor.RED} ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝
+    ██████╗ ███████╗██████╗  █████╗  ██████╗ ██████╗  ██████╗ ██╗   ██╗██████╗
+    ██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝ ██╔══██╗██╔═══██╗██║   ██║██╔══██╗
+    ██║  ██║█████╗  ██║  ██║███████║██║  ███╗██████╔╝██║   ██║██║   ██║██████╔╝
+    ██║  ██║██╔══╝  ██║  ██║██╔══██║██║   ██║██╔══██╗██║   ██║██║   ██║██╔═══╝
+    ██████╔╝███████╗██████╔╝██║  ██║╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║
+    ╚═════╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝
 
-${AnsiColor.BRIGHT_BLUE}:: JHipster 🤓  :: Running Spring Boot ${spring-boot.version} ::
-:: https://www.jhipster.tech ::${AnsiColor.DEFAULT}
+${AnsiColor.BRIGHT_BLUE}:: JRegistry :: Running Spring Boot ${spring-boot.version} ::
+:: Marco Di Gennaro https://www.linkedin.com/in/marco-di-gennaro-b6383166/ ::${AnsiColor.DEFAULT}
