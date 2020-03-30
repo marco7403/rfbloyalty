@@ -26,6 +26,7 @@ relationship OneToOne {
     RfbUser {locationName} to RfbLocation
 }
 
+
 dto * with mapstruct
 service * with serviceImpl
 
