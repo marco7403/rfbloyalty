@@ -1,0 +1,33 @@
+entity RfbLocation {
+	locationName String,
+    runDayOjWeek String
+}
+
+entity RfbEvent {
+	eventDate ZonedDateTime,
+    eventCode String
+}
+
+entity RfbEventAttendance {
+	eventAttendance LocalDate,
+}
+
+entity RfbUser {
+	userName String,
+}
+
+relationship OneToMany {
+	RfbLocation {rfbEvent} to RfbEvent
+    RfbEvent {rfbEventAttendance} to RfbEventAttendance
+}
+
+relationship OneToOne {
+	RfbEventAttendance {rfbUser} to RfbUser
+    RfbUser {locationName} to RfbLocation
+}
+
+dto * with mapstruct
+service * with serviceImpl
+
+paginate RfbLocation, RfbEvent with pagination
+paginate RfbEventAttendance with infinite-scroll
