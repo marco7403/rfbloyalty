@@ -1,0 +1,39 @@
+{
+    "name": "RfbEvent",
+    "fields": [
+        {
+            "fieldName": "eventDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "eventCode",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "rfbEventAttendance",
+            "otherEntityRelationshipName": "rfbEvent",
+            "relationshipName": "rfbEventAttendance"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "rfbLocation",
+            "otherEntityRelationshipName": "rfbEvent",
+            "relationshipName": "rfbLocation",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200330153500",
+    "entityTableName": "rfb_event",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

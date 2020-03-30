@@ -44,6 +44,12 @@ public class CacheConfiguration {
             createCache(cm, dedagroup.it.domain.User.class.getName() + ".authorities");
             createCache(cm, dedagroup.it.domain.PersistentToken.class.getName());
             createCache(cm, dedagroup.it.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, dedagroup.it.domain.RfbLocation.class.getName());
+            createCache(cm, dedagroup.it.domain.RfbLocation.class.getName() + ".rfbEvents");
+            createCache(cm, dedagroup.it.domain.RfbEvent.class.getName());
+            createCache(cm, dedagroup.it.domain.RfbEvent.class.getName() + ".rfbEventAttendances");
+            createCache(cm, dedagroup.it.domain.RfbEventAttendance.class.getName());
+            createCache(cm, dedagroup.it.domain.RfbUser.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
