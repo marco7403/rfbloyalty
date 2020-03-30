@@ -36,6 +36,14 @@
                         <option [ngValue]="rfbEventOption.id" *ngFor="let rfbEventOption of rfbevents; trackBy: trackById">{{ rfbEventOption.id }}</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rfbUser">Rfb User</label>
+                    <select class="form-control" id="field_rfbUser" name="rfbUser" formControlName="rfbUserId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rfbUserOption.id" *ngFor="let rfbUserOption of rfbusers; trackBy: trackById">{{ rfbUserOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

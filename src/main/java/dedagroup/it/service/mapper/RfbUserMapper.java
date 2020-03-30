@@ -16,6 +16,8 @@ public interface RfbUserMapper extends EntityMapper<RfbUserDTO, RfbUser> {
     RfbUserDTO toDto(RfbUser rfbUser);
 
     @Mapping(source = "locationNameId", target = "locationName")
+    @Mapping(target = "rfbEventAttendances", ignore = true)
+    @Mapping(target = "removeRfbEventAttendance", ignore = true)
     RfbUser toEntity(RfbUserDTO rfbUserDTO);
 
     default RfbUser fromId(Long id) {

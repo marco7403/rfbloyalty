@@ -17,6 +17,8 @@ public class RfbEventAttendanceDTO implements Serializable {
     private Long rfbUserId;
 
     private Long rfbEventId;
+
+    private Long rfbUserId;
     
     public Long getId() {
         return id;
@@ -50,6 +52,14 @@ public class RfbEventAttendanceDTO implements Serializable {
         this.rfbEventId = rfbEventId;
     }
 
+    public Long getRfbUserId() {
+        return rfbUserId;
+    }
+
+    public void setRfbUserId(Long rfbUserId) {
+        this.rfbUserId = rfbUserId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -78,6 +88,7 @@ public class RfbEventAttendanceDTO implements Serializable {
             ", eventAttendance='" + getEventAttendance() + "'" +
             ", rfbUserId=" + getRfbUserId() +
             ", rfbEventId=" + getRfbEventId() +
+            ", rfbUserId=" + getRfbUserId() +
             "}";
     }
 }

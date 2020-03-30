@@ -21,6 +21,13 @@
             "otherEntityRelationshipName": "rfbEventAttendance",
             "relationshipName": "rfbEvent",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "rfbUser",
+            "otherEntityRelationshipName": "rfbEventAttendance",
+            "relationshipName": "rfbUser",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20200330153600",

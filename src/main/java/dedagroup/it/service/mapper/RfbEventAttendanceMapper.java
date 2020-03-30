@@ -14,10 +14,12 @@ public interface RfbEventAttendanceMapper extends EntityMapper<RfbEventAttendanc
 
     @Mapping(source = "rfbUser.id", target = "rfbUserId")
     @Mapping(source = "rfbEvent.id", target = "rfbEventId")
+    @Mapping(source = "rfbUser.id", target = "rfbUserId")
     RfbEventAttendanceDTO toDto(RfbEventAttendance rfbEventAttendance);
 
     @Mapping(source = "rfbUserId", target = "rfbUser")
     @Mapping(source = "rfbEventId", target = "rfbEvent")
+    @Mapping(source = "rfbUserId", target = "rfbUser")
     RfbEventAttendance toEntity(RfbEventAttendanceDTO rfbEventAttendanceDTO);
 
     default RfbEventAttendance fromId(Long id) {
