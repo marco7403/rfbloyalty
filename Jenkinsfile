@@ -1,67 +1,46 @@
 #!/usr/bin/env groovy
 
 node {
+
+    jdk = tool name: 'JDK9'
+    env.JAVA_HOME = "${jdk}"
+
     stage('checkout') {
         checkout scm
     }
-    gitlabCommitStatus('build') {
-        docker.image('jhipster/jhipster:v6.8.0').inside('-u jhipster -e MAVEN_OPTS="-Duser.home=./"') {
-            stage('check java') {
-                sh "java -version"
-            }
 
-            stage('clean') {
-                sh "chmod +x mvnw"
-                sh "./mvnw -ntp clean"
-            }
-            stage('nohttp') {
-                sh "./mvnw -ntp checkstyle:check"
-            }
+    stage('check java') {
+        sh "${jdk}/bin/java -version"
+    }
 
-            stage('install tools') {
-                sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.2"
-            }
+    stage('clean') {
+        sh "chmod +x mvnw"
+        sh "./mvnw -ntp clean"
+    }
+    stage('nohttp') {
+        sh "./mvnw -ntp checkstyle:check"
+    }
 
-            stage('npm install') {
-                sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
-            }
+    stage('install tools') {
+        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:install-node-and-npm -DnodeVersion=v12.16.1 -DnpmVersion=6.14.2"
+    }
 
-            stage('backend tests') {
-                try {
-                    sh "./mvnw -ntp verify"
-                } catch(err) {
-                    throw err
-                } finally {
-                    junit '**/target/test-results/**/TEST-*.xml'
-                }
-            }
+    stage('npm install') {
+        sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm"
+    }
 
-            stage('frontend tests') {
-                try {
-                    sh "./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
-                } catch(err) {
-                    throw err
-                } finally {
-                    junit '**/target/test-results/**/TEST-*.xml'
-                }
-            }
-
-            stage('packaging') {
-                sh "./mvnw -ntp verify -Pprod -DskipTests"
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-            }
-            stage('quality analysis') {
-                withSonarQubeEnv('sonar') {
-                    sh "./mvnw -ntp initialize sonar:sonar"
-                }
-            }
+    stage('backend tests') {
+        try {
+            sh "./mvnw -ntp verify"
+        } catch (err) {
+            throw err
+        } finally {
+            junit '**/target/test-results/**/TEST-*.xml'
         }
+    }
 
-        def dockerImage
-        stage('publish docker') {
-            // A pre-requisite to this step is to setup authentication to the docker registry
-            // https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#authentication-methods
-            sh "./mvnw -ntp jib:build"
-        }
+    stage('packaging') {
+        sh "./mvnw -ntp verify -Pprod,war,swagger -DskipTests"
+        archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
     }
 }
