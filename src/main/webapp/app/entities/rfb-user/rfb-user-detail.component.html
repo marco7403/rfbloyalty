@@ -12,12 +12,6 @@
                 <dd>
                     <span>{{ rfbUser.userName }}</span>
                 </dd>
-                <dt><span>Location Name</span></dt>
-                <dd>
-                    <div *ngIf="rfbUser.locationNameId">
-                        <a [routerLink]="['/rfb-location', rfbUser.locationNameId, 'view']">{{ rfbUser.locationNameId }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

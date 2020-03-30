@@ -4,12 +4,9 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { IRfbUser, RfbUser } from 'app/shared/model/rfb-user.model';
 import { RfbUserService } from './rfb-user.service';
-import { IRfbLocation } from 'app/shared/model/rfb-location.model';
-import { RfbLocationService } from 'app/entities/rfb-location/rfb-location.service';
 
 @Component({
   selector: 'jhi-rfb-user-update',
@@ -17,54 +14,24 @@ import { RfbLocationService } from 'app/entities/rfb-location/rfb-location.servi
 })
 export class RfbUserUpdateComponent implements OnInit {
   isSaving = false;
-  locationnames: IRfbLocation[] = [];
 
   editForm = this.fb.group({
     id: [],
-    userName: [],
-    locationNameId: []
+    userName: []
   });
 
-  constructor(
-    protected rfbUserService: RfbUserService,
-    protected rfbLocationService: RfbLocationService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected rfbUserService: RfbUserService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ rfbUser }) => {
       this.updateForm(rfbUser);
-
-      this.rfbLocationService
-        .query({ filter: 'rfbuser-is-null' })
-        .pipe(
-          map((res: HttpResponse<IRfbLocation[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: IRfbLocation[]) => {
-          if (!rfbUser.locationNameId) {
-            this.locationnames = resBody;
-          } else {
-            this.rfbLocationService
-              .find(rfbUser.locationNameId)
-              .pipe(
-                map((subRes: HttpResponse<IRfbLocation>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IRfbLocation[]) => (this.locationnames = concatRes));
-          }
-        });
     });
   }
 
   updateForm(rfbUser: IRfbUser): void {
     this.editForm.patchValue({
       id: rfbUser.id,
-      userName: rfbUser.userName,
-      locationNameId: rfbUser.locationNameId
+      userName: rfbUser.userName
     });
   }
 
@@ -86,8 +53,7 @@ export class RfbUserUpdateComponent implements OnInit {
     return {
       ...new RfbUser(),
       id: this.editForm.get(['id'])!.value,
-      userName: this.editForm.get(['userName'])!.value,
-      locationNameId: this.editForm.get(['locationNameId'])!.value
+      userName: this.editForm.get(['userName'])!.value
     };
   }
 
@@ -105,9 +71,5 @@ export class RfbUserUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IRfbLocation): any {
-    return item.id;
   }
 }

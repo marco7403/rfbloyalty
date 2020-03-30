@@ -27,10 +27,6 @@ public class RfbUser implements Serializable {
     @Column(name = "user_name")
     private String userName;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private RfbLocation locationName;
-
     @OneToMany(mappedBy = "rfbUser")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<RfbEventAttendance> rfbEventAttendances = new HashSet<>();
@@ -55,19 +51,6 @@ public class RfbUser implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public RfbLocation getLocationName() {
-        return locationName;
-    }
-
-    public RfbUser locationName(RfbLocation rfbLocation) {
-        this.locationName = rfbLocation;
-        return this;
-    }
-
-    public void setLocationName(RfbLocation rfbLocation) {
-        this.locationName = rfbLocation;
     }
 
     public Set<RfbEventAttendance> getRfbEventAttendances() {

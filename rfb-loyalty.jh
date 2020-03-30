@@ -24,7 +24,6 @@ relationship OneToMany {
 
 relationship OneToOne {
 	RfbEventAttendance {rfbUser} to RfbUser
-    RfbUser {locationName} to RfbLocation
 }
 
 dto * with mapstruct
