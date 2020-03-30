@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(RfbLocationService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new RfbLocation(0, 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new RfbLocation(0, 'AAAAAAA', 0);
     });
 
     describe('Service methods', () => {
@@ -55,7 +55,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             locationName: 'BBBBBB',
-            runDayOjWeek: 'BBBBBB'
+            runDayOjWeek: 1
           },
           elemDefault
         );
@@ -73,7 +73,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             locationName: 'BBBBBB',
-            runDayOjWeek: 'BBBBBB'
+            runDayOjWeek: 1
           },
           elemDefault
         );

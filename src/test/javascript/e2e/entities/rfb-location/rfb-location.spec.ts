@@ -43,19 +43,13 @@ describe('RfbLocation e2e test', () => {
 
     await rfbLocationComponentsPage.clickOnCreateButton();
 
-    await promise.all([
-      rfbLocationUpdatePage.setLocationNameInput('locationName'),
-      rfbLocationUpdatePage.setRunDayOjWeekInput('runDayOjWeek')
-    ]);
+    await promise.all([rfbLocationUpdatePage.setLocationNameInput('locationName'), rfbLocationUpdatePage.setRunDayOjWeekInput('5')]);
 
     expect(await rfbLocationUpdatePage.getLocationNameInput()).to.eq(
       'locationName',
       'Expected LocationName value to be equals to locationName'
     );
-    expect(await rfbLocationUpdatePage.getRunDayOjWeekInput()).to.eq(
-      'runDayOjWeek',
-      'Expected RunDayOjWeek value to be equals to runDayOjWeek'
-    );
+    expect(await rfbLocationUpdatePage.getRunDayOjWeekInput()).to.eq('5', 'Expected runDayOjWeek value to be equals to 5');
 
     await rfbLocationUpdatePage.save();
     expect(await rfbLocationUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

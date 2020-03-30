@@ -7,7 +7,7 @@
         },
         {
             "fieldName": "runDayOjWeek",
-            "fieldType": "String"
+            "fieldType": "Integer"
         }
     ],
     "relationships": [
