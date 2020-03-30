@@ -14,8 +14,6 @@ public class RfbEventAttendanceDTO implements Serializable {
     private LocalDate eventAttendance;
 
 
-    private Long rfbUserId;
-
     private Long rfbEventId;
 
     private Long rfbUserId;
@@ -34,14 +32,6 @@ public class RfbEventAttendanceDTO implements Serializable {
 
     public void setEventAttendance(LocalDate eventAttendance) {
         this.eventAttendance = eventAttendance;
-    }
-
-    public Long getRfbUserId() {
-        return rfbUserId;
-    }
-
-    public void setRfbUserId(Long rfbUserId) {
-        this.rfbUserId = rfbUserId;
     }
 
     public Long getRfbEventId() {
@@ -86,7 +76,6 @@ public class RfbEventAttendanceDTO implements Serializable {
         return "RfbEventAttendanceDTO{" +
             "id=" + getId() +
             ", eventAttendance='" + getEventAttendance() + "'" +
-            ", rfbUserId=" + getRfbUserId() +
             ", rfbEventId=" + getRfbEventId() +
             ", rfbUserId=" + getRfbUserId() +
             "}";

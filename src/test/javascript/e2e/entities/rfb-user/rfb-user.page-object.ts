@@ -31,6 +31,8 @@ export class RfbUserUpdatePage {
 
   userNameInput = element(by.id('field_userName'));
 
+  rfbUserSelect = element(by.id('field_rfbUser'));
+
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
   }
@@ -41,6 +43,25 @@ export class RfbUserUpdatePage {
 
   async getUserNameInput(): Promise<string> {
     return await this.userNameInput.getAttribute('value');
+  }
+
+  async rfbUserSelectLastOption(): Promise<void> {
+    await this.rfbUserSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async rfbUserSelectOption(option: string): Promise<void> {
+    await this.rfbUserSelect.sendKeys(option);
+  }
+
+  getRfbUserSelect(): ElementFinder {
+    return this.rfbUserSelect;
+  }
+
+  async getRfbUserSelectedOption(): Promise<string> {
+    return await this.rfbUserSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {
