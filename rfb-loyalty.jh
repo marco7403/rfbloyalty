@@ -1,6 +1,9 @@
-entity RfbLocation {
-	locationName String,
-    runDayOjWeek String
+entity RfbUser {
+	userName String,
+}
+
+entity RfbEventAttendance {
+	eventAttendance LocalDate,
 }
 
 entity RfbEvent {
@@ -8,12 +11,9 @@ entity RfbEvent {
     eventCode String
 }
 
-entity RfbEventAttendance {
-	eventAttendance LocalDate,
-}
-
-entity RfbUser {
-	userName String,
+entity RfbLocation {
+	locationName String,
+    runDayOjWeek String
 }
 
 relationship OneToMany {
@@ -23,7 +23,7 @@ relationship OneToMany {
 }
 
 relationship OneToOne {
-	RfbEventAttendance {rfbUser} to RfbUser
+	RfbUser {rfbUser} to RfbLocation
 }
 
 dto * with mapstruct
