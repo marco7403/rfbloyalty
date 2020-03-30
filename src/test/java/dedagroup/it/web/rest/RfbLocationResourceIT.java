@@ -37,8 +37,8 @@ public class RfbLocationResourceIT {
     private static final String DEFAULT_LOCATION_NAME = "AAAAAAAAAA";
     private static final String UPDATED_LOCATION_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_RUN_DAY_OJ_WEEK = "AAAAAAAAAA";
-    private static final String UPDATED_RUN_DAY_OJ_WEEK = "BBBBBBBBBB";
+    private static final Integer DEFAULT_RUN_DAY_OJ_WEEK = 1;
+    private static final Integer UPDATED_RUN_DAY_OJ_WEEK = 2;
 
     @Autowired
     private RfbLocationRepository rfbLocationRepository;

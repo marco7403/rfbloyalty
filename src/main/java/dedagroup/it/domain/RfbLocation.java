@@ -28,7 +28,7 @@ public class RfbLocation implements Serializable {
     private String locationName;
 
     @Column(name = "run_day_oj_week")
-    private String runDayOjWeek;
+    private Integer runDayOjWeek;
 
     @OneToMany(mappedBy = "rfbLocation")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -56,16 +56,16 @@ public class RfbLocation implements Serializable {
         this.locationName = locationName;
     }
 
-    public String getRunDayOjWeek() {
+    public Integer getRunDayOjWeek() {
         return runDayOjWeek;
     }
 
-    public RfbLocation runDayOjWeek(String runDayOjWeek) {
+    public RfbLocation runDayOjWeek(Integer runDayOjWeek) {
         this.runDayOjWeek = runDayOjWeek;
         return this;
     }
 
-    public void setRunDayOjWeek(String runDayOjWeek) {
+    public void setRunDayOjWeek(Integer runDayOjWeek) {
         this.runDayOjWeek = runDayOjWeek;
     }
 
@@ -116,7 +116,7 @@ public class RfbLocation implements Serializable {
         return "RfbLocation{" +
             "id=" + getId() +
             ", locationName='" + getLocationName() + "'" +
-            ", runDayOjWeek='" + getRunDayOjWeek() + "'" +
+            ", runDayOjWeek=" + getRunDayOjWeek() +
             "}";
     }
 }
