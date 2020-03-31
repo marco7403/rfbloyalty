@@ -12,7 +12,7 @@ public class RfbLocationDTO implements Serializable {
 
     private String locationName;
 
-    private Integer runDayOjWeek;
+    private Integer runDayOfWeek;
 
     
     public Long getId() {
@@ -31,12 +31,12 @@ public class RfbLocationDTO implements Serializable {
         this.locationName = locationName;
     }
 
-    public Integer getRunDayOjWeek() {
-        return runDayOjWeek;
+    public Integer getRunDayOfWeek() {
+        return runDayOfWeek;
     }
 
-    public void setRunDayOjWeek(Integer runDayOjWeek) {
-        this.runDayOjWeek = runDayOjWeek;
+    public void setRunDayOfWeek(Integer runDayOfWeek) {
+        this.runDayOfWeek = runDayOfWeek;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class RfbLocationDTO implements Serializable {
         return "RfbLocationDTO{" +
             "id=" + getId() +
             ", locationName='" + getLocationName() + "'" +
-            ", runDayOjWeek=" + getRunDayOjWeek() +
+            ", runDayOfWeek=" + getRunDayOfWeek() +
             "}";
     }
 }

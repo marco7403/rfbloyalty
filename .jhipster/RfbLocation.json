@@ -6,7 +6,7 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "runDayOjWeek",
+            "fieldName": "runDayOfWeek",
             "fieldType": "Integer"
         }
     ],
