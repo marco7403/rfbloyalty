@@ -13,7 +13,7 @@ entity RfbEvent {
 
 entity RfbLocation {
 	locationName String,
-    runDayOjWeek Integer
+    runDayOfWeek Integer
 }
 
 relationship OneToMany {
