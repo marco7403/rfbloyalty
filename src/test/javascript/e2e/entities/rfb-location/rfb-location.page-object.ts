@@ -30,7 +30,7 @@ export class RfbLocationUpdatePage {
   cancelButton = element(by.id('cancel-save'));
 
   locationNameInput = element(by.id('field_locationName'));
-  runDayOjWeekInput = element(by.id('field_runDayOjWeek'));
+  runDayOfWeekInput = element(by.id('field_runDayOfWeek'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -44,12 +44,12 @@ export class RfbLocationUpdatePage {
     return await this.locationNameInput.getAttribute('value');
   }
 
-  async setRunDayOjWeekInput(runDayOjWeek: string): Promise<void> {
-    await this.runDayOjWeekInput.sendKeys(runDayOjWeek);
+  async setRunDayOfWeekInput(runDayOfWeek: string): Promise<void> {
+    await this.runDayOfWeekInput.sendKeys(runDayOfWeek);
   }
 
-  async getRunDayOjWeekInput(): Promise<string> {
-    return await this.runDayOjWeekInput.getAttribute('value');
+  async getRunDayOfWeekInput(): Promise<string> {
+    return await this.runDayOfWeekInput.getAttribute('value');
   }
 
   async save(): Promise<void> {

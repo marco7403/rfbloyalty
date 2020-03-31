@@ -55,7 +55,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             locationName: 'BBBBBB',
-            runDayOjWeek: 1
+            runDayOfWeek: 1
           },
           elemDefault
         );
@@ -73,7 +73,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             locationName: 'BBBBBB',
-            runDayOjWeek: 1
+            runDayOfWeek: 1
           },
           elemDefault
         );

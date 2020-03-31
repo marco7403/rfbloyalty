@@ -37,8 +37,8 @@ public class RfbLocationResourceIT {
     private static final String DEFAULT_LOCATION_NAME = "AAAAAAAAAA";
     private static final String UPDATED_LOCATION_NAME = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_RUN_DAY_OJ_WEEK = 1;
-    private static final Integer UPDATED_RUN_DAY_OJ_WEEK = 2;
+    private static final Integer DEFAULT_RUN_DAY_OF_WEEK = 1;
+    private static final Integer UPDATED_RUN_DAY_OF_WEEK = 2;
 
     @Autowired
     private RfbLocationRepository rfbLocationRepository;
@@ -66,7 +66,7 @@ public class RfbLocationResourceIT {
     public static RfbLocation createEntity(EntityManager em) {
         RfbLocation rfbLocation = new RfbLocation()
             .locationName(DEFAULT_LOCATION_NAME)
-            .runDayOjWeek(DEFAULT_RUN_DAY_OJ_WEEK);
+            .runDayOfWeek(DEFAULT_RUN_DAY_OF_WEEK);
         return rfbLocation;
     }
     /**
@@ -78,7 +78,7 @@ public class RfbLocationResourceIT {
     public static RfbLocation createUpdatedEntity(EntityManager em) {
         RfbLocation rfbLocation = new RfbLocation()
             .locationName(UPDATED_LOCATION_NAME)
-            .runDayOjWeek(UPDATED_RUN_DAY_OJ_WEEK);
+            .runDayOfWeek(UPDATED_RUN_DAY_OF_WEEK);
         return rfbLocation;
     }
 
@@ -104,7 +104,7 @@ public class RfbLocationResourceIT {
         assertThat(rfbLocationList).hasSize(databaseSizeBeforeCreate + 1);
         RfbLocation testRfbLocation = rfbLocationList.get(rfbLocationList.size() - 1);
         assertThat(testRfbLocation.getLocationName()).isEqualTo(DEFAULT_LOCATION_NAME);
-        assertThat(testRfbLocation.getRunDayOjWeek()).isEqualTo(DEFAULT_RUN_DAY_OJ_WEEK);
+        assertThat(testRfbLocation.getRunDayOfWeek()).isEqualTo(DEFAULT_RUN_DAY_OF_WEEK);
     }
 
     @Test
@@ -140,7 +140,7 @@ public class RfbLocationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(rfbLocation.getId().intValue())))
             .andExpect(jsonPath("$.[*].locationName").value(hasItem(DEFAULT_LOCATION_NAME)))
-            .andExpect(jsonPath("$.[*].runDayOjWeek").value(hasItem(DEFAULT_RUN_DAY_OJ_WEEK)));
+            .andExpect(jsonPath("$.[*].runDayOfWeek").value(hasItem(DEFAULT_RUN_DAY_OF_WEEK)));
     }
     
     @Test
@@ -155,7 +155,7 @@ public class RfbLocationResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(rfbLocation.getId().intValue()))
             .andExpect(jsonPath("$.locationName").value(DEFAULT_LOCATION_NAME))
-            .andExpect(jsonPath("$.runDayOjWeek").value(DEFAULT_RUN_DAY_OJ_WEEK));
+            .andExpect(jsonPath("$.runDayOfWeek").value(DEFAULT_RUN_DAY_OF_WEEK));
     }
 
     @Test
@@ -180,7 +180,7 @@ public class RfbLocationResourceIT {
         em.detach(updatedRfbLocation);
         updatedRfbLocation
             .locationName(UPDATED_LOCATION_NAME)
-            .runDayOjWeek(UPDATED_RUN_DAY_OJ_WEEK);
+            .runDayOfWeek(UPDATED_RUN_DAY_OF_WEEK);
         RfbLocationDTO rfbLocationDTO = rfbLocationMapper.toDto(updatedRfbLocation);
 
         restRfbLocationMockMvc.perform(put("/api/rfb-locations").with(csrf())
@@ -193,7 +193,7 @@ public class RfbLocationResourceIT {
         assertThat(rfbLocationList).hasSize(databaseSizeBeforeUpdate);
         RfbLocation testRfbLocation = rfbLocationList.get(rfbLocationList.size() - 1);
         assertThat(testRfbLocation.getLocationName()).isEqualTo(UPDATED_LOCATION_NAME);
-        assertThat(testRfbLocation.getRunDayOjWeek()).isEqualTo(UPDATED_RUN_DAY_OJ_WEEK);
+        assertThat(testRfbLocation.getRunDayOfWeek()).isEqualTo(UPDATED_RUN_DAY_OF_WEEK);
     }
 
     @Test

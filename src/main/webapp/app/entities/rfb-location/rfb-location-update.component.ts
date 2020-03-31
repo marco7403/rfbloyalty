@@ -18,7 +18,7 @@ export class RfbLocationUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     locationName: [],
-    runDayOjWeek: []
+    runDayOfWeek: []
   });
 
   constructor(protected rfbLocationService: RfbLocationService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -33,7 +33,7 @@ export class RfbLocationUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: rfbLocation.id,
       locationName: rfbLocation.locationName,
-      runDayOjWeek: rfbLocation.runDayOjWeek
+      runDayOfWeek: rfbLocation.runDayOfWeek
     });
   }
 
@@ -56,7 +56,7 @@ export class RfbLocationUpdateComponent implements OnInit {
       ...new RfbLocation(),
       id: this.editForm.get(['id'])!.value,
       locationName: this.editForm.get(['locationName'])!.value,
-      runDayOjWeek: this.editForm.get(['runDayOjWeek'])!.value
+      runDayOfWeek: this.editForm.get(['runDayOfWeek'])!.value
     };
   }
 

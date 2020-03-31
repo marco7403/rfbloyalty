@@ -24,7 +24,7 @@
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="locationName"><span>Location Name</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="runDayOjWeek"><span>Run Day Oj Week</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="runDayOfWeek"><span>Run Day Of Week</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                 <tr *ngFor="let rfbLocation of rfbLocations ;trackBy: trackId">
                     <td><a [routerLink]="['/rfb-location', rfbLocation.id, 'view']">{{ rfbLocation.id }}</a></td>
                     <td>{{ rfbLocation.locationName }}</td>
-                    <td>{{ rfbLocation.runDayOjWeek }}</td>
+                    <td>{{ rfbLocation.runDayOfWeek }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
