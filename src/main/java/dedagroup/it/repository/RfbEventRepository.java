@@ -1,9 +1,11 @@
 package dedagroup.it.repository;
 
 import dedagroup.it.domain.RfbEvent;
-
-import org.springframework.data.jpa.repository.*;
+import dedagroup.it.domain.RfbLocation;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDate;
 
 /**
  * Spring Data  repository for the RfbEvent entity.
@@ -11,4 +13,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface RfbEventRepository extends JpaRepository<RfbEvent, Long> {
+    RfbEvent findByRfbLocationAndEventDate(RfbLocation location, LocalDate date);
 }

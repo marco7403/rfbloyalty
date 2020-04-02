@@ -18,7 +18,8 @@ logging:
     ROOT: DEBUG
     io.github.jhipster: DEBUG
     dedagroup.it: DEBUG
-
+    com.rfb.service: DEBUG
+    com.rfb.aop.logging: ERROR
 spring:
   profiles:
     active: dev
@@ -119,4 +120,4 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
