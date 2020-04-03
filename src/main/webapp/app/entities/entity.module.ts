@@ -15,10 +15,6 @@ import { RouterModule } from '@angular/router';
       {
         path: 'rfb-event-attendance',
         loadChildren: () => import('./rfb-event-attendance/rfb-event-attendance.module').then(m => m.RfbloyaltyRfbEventAttendanceModule)
-      },
-      {
-        path: 'rfb-user',
-        loadChildren: () => import('./rfb-user/rfb-user.module').then(m => m.RfbloyaltyRfbUserModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

@@ -39,7 +39,7 @@ public class RfbEventCodeService {
 
         rfbLocations.forEach(location -> {
             log.debug("Checking Events for location: " + location.getId() );
-            RfbEvent existingEvent = rfbEventRepository.findByRfbLocationAndEventDate(location, LocalDate.now());
+            RfbEvent existingEvent = rfbEventRepository.findByRfbLocationAndEventDate(location, ZonedDateTime.now());
 
             if(existingEvent == null) {
                 log.debug("Event Not Found, Creating Event");

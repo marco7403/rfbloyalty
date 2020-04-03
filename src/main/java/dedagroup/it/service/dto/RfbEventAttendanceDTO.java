@@ -1,14 +1,14 @@
 package dedagroup.it.service.dto;
 
-import java.time.LocalDate;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * A DTO for the {@link dedagroup.it.domain.RfbEventAttendance} entity.
  */
 public class RfbEventAttendanceDTO implements Serializable {
-    
+
     private Long id;
 
     private LocalDate eventAttendance;
@@ -16,8 +16,8 @@ public class RfbEventAttendanceDTO implements Serializable {
 
     private Long rfbEventId;
 
-    private Long rfbUserId;
-    
+    private Long userId;
+
     public Long getId() {
         return id;
     }
@@ -42,12 +42,12 @@ public class RfbEventAttendanceDTO implements Serializable {
         this.rfbEventId = rfbEventId;
     }
 
-    public Long getRfbUserId() {
-        return rfbUserId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setRfbUserId(Long rfbUserId) {
-        this.rfbUserId = rfbUserId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -77,7 +77,7 @@ public class RfbEventAttendanceDTO implements Serializable {
             "id=" + getId() +
             ", eventAttendance='" + getEventAttendance() + "'" +
             ", rfbEventId=" + getRfbEventId() +
-            ", rfbUserId=" + getRfbUserId() +
+            ", userId=" + getUserId() +
             "}";
     }
 }

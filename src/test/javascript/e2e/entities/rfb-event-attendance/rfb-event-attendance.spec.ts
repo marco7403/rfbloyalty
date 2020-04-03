@@ -49,8 +49,7 @@ describe('RfbEventAttendance e2e test', () => {
 
     await promise.all([
       rfbEventAttendanceUpdatePage.setEventAttendanceInput('2000-12-31'),
-      rfbEventAttendanceUpdatePage.rfbEventSelectLastOption(),
-      rfbEventAttendanceUpdatePage.rfbUserSelectLastOption()
+      rfbEventAttendanceUpdatePage.rfbEventSelectLastOption()
     ]);
 
     expect(await rfbEventAttendanceUpdatePage.getEventAttendanceInput()).to.eq(

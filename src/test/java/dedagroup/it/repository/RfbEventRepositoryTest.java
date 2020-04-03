@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
+import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
 
@@ -20,17 +20,18 @@ public class RfbEventRepositoryTest extends AbstractRepositoryTest {
     @Before
     public void setUp() throws Exception {
         RfbBootstrap rfbBootstrap = new RfbBootstrap(rfbLocationRepository, rfbEventRepository,
-            rfbEventAttendanceRepository, rfbUserRepository);
+            rfbEventAttendanceRepository, userRepository, passwordEncoder);
     }
 
     @Test
     public void findAllByRfbLocationAndEventDate() throws Exception {
-        RfbLocation aleAndTheWitch = rfbLocationRepository.findByLocationName("Refined Soft Keyboard");
+        List<RfbLocation> rfbLocation = rfbLocationRepository.findAll();
+        rfbLocation.stream().forEach(item -> System.out.println(item.getLocationName()));
+        RfbLocation aleAndTheWitch = rfbLocationRepository.findByLocationName(rfbLocation.get(0).getLocationName());
         assertNotNull(aleAndTheWitch);
-
-        RfbEvent event = rfbEventRepository.findByRfbLocationAndEventDate(aleAndTheWitch, LocalDate.now());
+        List<RfbEvent> rfbEvents = rfbEventRepository.findAll();
+        RfbEvent event = rfbEventRepository.findByRfbLocationAndEventDate(aleAndTheWitch, rfbEvents.get(0).getEventDate());
         assertNotNull(event);
-
     }
 
 }

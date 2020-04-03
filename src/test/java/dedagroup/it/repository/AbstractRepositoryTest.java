@@ -1,6 +1,7 @@
 package dedagroup.it.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 abstract class AbstractRepositoryTest {
     @Autowired
@@ -13,5 +14,9 @@ abstract class AbstractRepositoryTest {
     RfbEventAttendanceRepository rfbEventAttendanceRepository;
 
     @Autowired
-    UserRepository rfbUserRepository;
+    UserRepository userRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
 }

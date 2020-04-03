@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class RfbEventAttendanceComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -32,7 +32,6 @@ export class RfbEventAttendanceUpdatePage {
   eventAttendanceInput = element(by.id('field_eventAttendance'));
 
   rfbEventSelect = element(by.id('field_rfbEvent'));
-  rfbUserSelect = element(by.id('field_rfbUser'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getText();
@@ -63,25 +62,6 @@ export class RfbEventAttendanceUpdatePage {
 
   async getRfbEventSelectedOption(): Promise<string> {
     return await this.rfbEventSelect.element(by.css('option:checked')).getText();
-  }
-
-  async rfbUserSelectLastOption(): Promise<void> {
-    await this.rfbUserSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async rfbUserSelectOption(option: string): Promise<void> {
-    await this.rfbUserSelect.sendKeys(option);
-  }
-
-  getRfbUserSelect(): ElementFinder {
-    return this.rfbUserSelect;
-  }
-
-  async getRfbUserSelectedOption(): Promise<string> {
-    return await this.rfbUserSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {
