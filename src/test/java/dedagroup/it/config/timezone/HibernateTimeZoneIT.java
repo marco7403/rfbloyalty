@@ -1,6 +1,7 @@
 package dedagroup.it.config.timezone;
 
 import dedagroup.it.RfbloyaltyApp;
+import dedagroup.it.config.TestSecurityConfiguration;
 import dedagroup.it.repository.timezone.DateTimeWrapper;
 import dedagroup.it.repository.timezone.DateTimeWrapperRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Integration tests for the UTC Hibernate configuration.
  */
-@SpringBootTest(classes = RfbloyaltyApp.class)
+@SpringBootTest(classes = {RfbloyaltyApp.class, TestSecurityConfiguration.class})
 public class HibernateTimeZoneIT {
 
     @Autowired

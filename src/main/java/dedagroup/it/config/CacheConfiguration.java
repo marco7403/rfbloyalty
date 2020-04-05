@@ -30,7 +30,6 @@ public class CacheConfiguration {
                 .build());
     }
 
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Bean
     public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(javax.cache.CacheManager cacheManager) {
         return hibernateProperties -> hibernateProperties.put(ConfigSettings.CACHE_MANAGER, cacheManager);
@@ -44,15 +43,7 @@ public class CacheConfiguration {
             createCache(cm, dedagroup.it.domain.User.class.getName());
             createCache(cm, dedagroup.it.domain.Authority.class.getName());
             createCache(cm, dedagroup.it.domain.User.class.getName() + ".authorities");
-            createCache(cm, dedagroup.it.domain.PersistentToken.class.getName());
-            createCache(cm, dedagroup.it.domain.User.class.getName() + ".persistentTokens");
-            createCache(cm, dedagroup.it.domain.RfbLocation.class.getName());
-            createCache(cm, dedagroup.it.domain.RfbLocation.class.getName() + ".rfbEvents");
-            createCache(cm, dedagroup.it.domain.RfbEvent.class.getName());
-            createCache(cm, dedagroup.it.domain.RfbEvent.class.getName() + ".rfbEventAttendances");
-            createCache(cm, dedagroup.it.domain.RfbEventAttendance.class.getName());
             // jhipster-needle-ehcache-add-entry
-
         };
     }
 

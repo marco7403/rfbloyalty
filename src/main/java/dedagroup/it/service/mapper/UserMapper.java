@@ -3,10 +3,12 @@ package dedagroup.it.service.mapper;
 import dedagroup.it.domain.Authority;
 import dedagroup.it.domain.User;
 import dedagroup.it.service.dto.UserDTO;
-
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -70,7 +72,7 @@ public class UserMapper {
         return authorities;
     }
 
-    public User userFromId(Long id) {
+    public User userFromId(String id) {
         if (id == null) {
             return null;
         }
