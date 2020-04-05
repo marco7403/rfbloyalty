@@ -1,33 +1,62 @@
-entity RfbUser {
-	userName String,
-}
+application {
+  config {
+    applicationType monolith
+    authenticationType oauth2
+    baseName rfbloyalty
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework angularX
+    clientPackageManager npm
+    clientTheme darkly
+    clientThemeVariant primary
+    creationTimestamp 1585311198528
+    databaseType sql
+    devDatabaseType h2Memory
+    dtoSuffix DTO
+    embeddableLaunchScript false
+    enableHibernateCache true
+    enableSwaggerCodegen false
+    enableTranslation false
+    jhiPrefix jhi
+    jhipsterVersion "6.8.0"
+    languages [en, fr]
+    messageBroker false
+    nativeLanguage en
+    otherModules []
+    packageName dedagroup.it
+    prodDatabaseType mysql
+    rememberMeKey "a02b95ac674c821b05bd9fb2e3770e359c9d082b40304197de0a2fe1b7bbd670eedb361d74129b23ad8618e0b15b78ed1794"
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType false
+    skipClient false
+    skipServer false
+    skipUserManagement true
+    testFrameworks [cucumber, protractor]
+    useSass true
+    websocket false
+  }
 
-entity RfbEventAttendance {
-	eventAttendance LocalDate,
+  entities RfbEvent, RfbEventAttendance, RfbLocation
 }
 
 entity RfbEvent {
-	eventDate ZonedDateTime,
-    eventCode String
+  eventDate ZonedDateTime,
+  eventCode String
 }
-
+entity RfbEventAttendance {
+  eventAttendance LocalDate
+}
 entity RfbLocation {
-	locationName String,
-    runDayOfWeek Integer
+  locationName String,
+  runDayOfWeek Integer
 }
-
 relationship OneToMany {
-	RfbLocation {rfbEvent} to RfbEvent
-    RfbEvent {rfbEventAttendance} to RfbEventAttendance
-    RfbUser {rfbEventAttendance} to RfbEventAttendance
+  RfbLocation{rfbEvent} to RfbEvent{rfbLocation},
+  RfbEvent{rfbEventAttendance} to RfbEventAttendance{rfbEvent}
 }
 
-relationship OneToOne {
-	RfbUser {rfbUser} to RfbLocation
-}
-
-dto * with mapstruct
-service * with serviceImpl
-
-paginate RfbLocation, RfbEvent with pagination
+dto RfbEvent, RfbEventAttendance, RfbLocation with mapstruct
+paginate RfbEvent, RfbLocation with pagination
 paginate RfbEventAttendance with infinite-scroll
+service RfbEvent, RfbEventAttendance, RfbLocation with serviceImpl
