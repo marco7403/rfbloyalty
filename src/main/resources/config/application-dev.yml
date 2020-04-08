@@ -18,8 +18,7 @@ logging:
     ROOT: DEBUG
     io.github.jhipster: DEBUG
     dedagroup.it: DEBUG
-    com.rfb.service: DEBUG
-    com.rfb.aop.logging: ERROR
+
 spring:
   profiles:
     active: dev
@@ -88,13 +87,9 @@ jhipster:
     allowed-origins: '*'
     allowed-methods: '*'
     allowed-headers: '*'
-    exposed-headers: 'Link,X-Total-Count'
+    exposed-headers: 'Authorization,Link,X-Total-Count'
     allow-credentials: true
     max-age: 1800
-  security:
-    remember-me:
-      # security key (this key should be unique for your application, and kept secret)
-      key: a02b95ac674c821b05bd9fb2e3770e359c9d082b40304197de0a2fe1b7bbd670eedb361d74129b23ad8618e0b15b78ed1794
   mail: # specific JHipster mail property, for standard properties see MailProperties
     base-url: http://127.0.0.1:8080
   metrics:
@@ -120,4 +115,4 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-application:
+# application:

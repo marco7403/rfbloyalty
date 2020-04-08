@@ -1,7 +1,6 @@
 package dedagroup.it.web.rest.errors;
 
 import io.github.jhipster.web.util.HeaderUtil;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.ResponseEntity;
@@ -89,23 +88,6 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
             .with(FIELD_ERRORS_KEY, fieldErrors)
             .build();
         return create(ex, problem, request);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<Problem> handleEmailAlreadyUsedException(dedagroup.it.service.EmailAlreadyUsedException ex, NativeWebRequest request) {
-        EmailAlreadyUsedException problem = new EmailAlreadyUsedException();
-        return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  false, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<Problem> handleUsernameAlreadyUsedException(dedagroup.it.service.UsernameAlreadyUsedException ex, NativeWebRequest request) {
-        LoginAlreadyUsedException problem = new LoginAlreadyUsedException();
-        return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  false, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<Problem> handleInvalidPasswordException(dedagroup.it.service.InvalidPasswordException ex, NativeWebRequest request) {
-        return create(new InvalidPasswordException(), request);
     }
 
     @ExceptionHandler

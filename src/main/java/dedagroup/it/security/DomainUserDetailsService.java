@@ -13,7 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 /**
@@ -55,8 +56,7 @@ public class DomainUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
             .map(authority -> new SimpleGrantedAuthority(authority.getName()))
             .collect(Collectors.toList());
-        return new org.springframework.security.core.userdetails.User(user.getLogin(),
-            user.getPassword(),
-            grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getLogin(), null,
+               grantedAuthorities);
     }
 }

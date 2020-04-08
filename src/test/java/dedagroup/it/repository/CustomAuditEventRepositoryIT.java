@@ -1,8 +1,8 @@
 package dedagroup.it.repository;
 
 import dedagroup.it.RfbloyaltyApp;
-
 import dedagroup.it.config.Constants;
+import dedagroup.it.config.TestSecurityConfiguration;
 import dedagroup.it.config.audit.AuditEventConverter;
 import dedagroup.it.domain.PersistentAuditEvent;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,13 +22,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static dedagroup.it.repository.CustomAuditEventRepository.EVENT_DATA_COLUMN_MAX_LENGTH;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Integration tests for {@link CustomAuditEventRepository}.
  */
-@SpringBootTest(classes = RfbloyaltyApp.class)
+@SpringBootTest(classes = {RfbloyaltyApp.class, TestSecurityConfiguration.class})
 @Transactional
 public class CustomAuditEventRepositoryIT {
 

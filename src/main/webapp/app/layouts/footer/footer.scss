@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/functions';
+@import '~bootswatch/dist/darkly/variables';
+@import '~bootstrap/scss/variables';
+
+/* ==========================================================================
+Logo styles
+========================================================================== */
+.logo-img {
+  height: 60px;
+  width: 200px;
+  display: inline-block;
+  align-content: flex-start;
+  //vertical-align: middle;
+  background: url('../../../content/images/dedagrouplogo.png') no-repeat center center;
+  background-size: contain;
+}

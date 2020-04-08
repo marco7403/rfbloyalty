@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Router, ActivatedRouteSnapshot, NavigationEnd, NavigationError } from '@angular/router';
+import { ActivatedRouteSnapshot, NavigationEnd, NavigationError, Router } from '@angular/router';
 
 import { AccountService } from 'app/core/auth/account.service';
 
@@ -9,7 +9,7 @@ import { AccountService } from 'app/core/auth/account.service';
   templateUrl: './main.component.html'
 })
 export class MainComponent implements OnInit {
-  constructor(private accountService: AccountService, private titleService: Title, private router: Router) {}
+  constructor(private accountService: AccountService, private titleService: Title, public router: Router) {}
 
   ngOnInit(): void {
     // try to log in automatically

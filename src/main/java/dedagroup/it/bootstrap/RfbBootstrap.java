@@ -9,7 +9,6 @@ import dedagroup.it.repository.RfbEventRepository;
 import dedagroup.it.repository.RfbLocationRepository;
 import dedagroup.it.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -25,16 +24,13 @@ public class RfbBootstrap implements CommandLineRunner {
     private final RfbEventRepository rfbEventRepository;
     private final RfbEventAttendanceRepository rfbEventAttendanceRepository;
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     public RfbBootstrap(RfbLocationRepository rfbLocationRepository, RfbEventRepository rfbEventRepository,
-                        RfbEventAttendanceRepository rfbEventAttendanceRepository, UserRepository userRepository,
-                        PasswordEncoder passwordEncoder) {
+                        RfbEventAttendanceRepository rfbEventAttendanceRepository, UserRepository userRepository) {
         this.rfbLocationRepository = rfbLocationRepository;
         this.rfbEventRepository = rfbEventRepository;
         this.rfbEventAttendanceRepository = rfbEventAttendanceRepository;
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
     @Transactional
     @Override
@@ -50,8 +46,8 @@ public class RfbBootstrap implements CommandLineRunner {
 
     private void initData() {
         User rfbUser = new User();
+        rfbUser.setId("11111");
         rfbUser.setFirstName("Johnny");
-        rfbUser.setPassword(passwordEncoder.encode("admin"));
         rfbUser.setLogin("johnny");
         rfbUser.setActivated(true);
         userRepository.save(rfbUser);
