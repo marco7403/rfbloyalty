@@ -1,13 +1,7 @@
 package dedagroup.it.bootstrap;
 
-import dedagroup.it.domain.RfbEvent;
-import dedagroup.it.domain.RfbEventAttendance;
-import dedagroup.it.domain.RfbLocation;
-import dedagroup.it.domain.User;
-import dedagroup.it.repository.RfbEventAttendanceRepository;
-import dedagroup.it.repository.RfbEventRepository;
-import dedagroup.it.repository.RfbLocationRepository;
-import dedagroup.it.repository.UserRepository;
+import dedagroup.it.domain.*;
+import dedagroup.it.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +9,11 @@ import javax.transaction.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
+
+import static dedagroup.it.security.AuthoritiesConstants.*;
 
 @Component
 public class RfbBootstrap implements CommandLineRunner {
@@ -24,13 +22,15 @@ public class RfbBootstrap implements CommandLineRunner {
     private final RfbEventRepository rfbEventRepository;
     private final RfbEventAttendanceRepository rfbEventAttendanceRepository;
     private final UserRepository userRepository;
+    private final AuthorityRepository authorityRepository;
 
     public RfbBootstrap(RfbLocationRepository rfbLocationRepository, RfbEventRepository rfbEventRepository,
-                        RfbEventAttendanceRepository rfbEventAttendanceRepository, UserRepository userRepository) {
+                        RfbEventAttendanceRepository rfbEventAttendanceRepository, UserRepository userRepository, AuthorityRepository authorityRepository) {
         this.rfbLocationRepository = rfbLocationRepository;
         this.rfbEventRepository = rfbEventRepository;
         this.rfbEventAttendanceRepository = rfbEventAttendanceRepository;
         this.userRepository = userRepository;
+        this.authorityRepository = authorityRepository;
     }
     @Transactional
     @Override
@@ -45,11 +45,28 @@ public class RfbBootstrap implements CommandLineRunner {
     }
 
     private void initData() {
+        Authority authorityRunner = new Authority();
+        authorityRunner.setName(RUNNER);
+        Authority authorityOrganizer = new Authority();
+        authorityOrganizer.setName(ORGANIZER);
+        Authority authorityAdmin = new Authority();
+        authorityAdmin.setName(ADMIN);
+        Authority authorityAnonymous = new Authority();
+        authorityAnonymous.setName(ANONYMOUS);
+
+        Set<Authority> authorityList = new HashSet<>();
+        authorityList.add(authorityAdmin);
+        authorityList.add(authorityOrganizer);
+        authorityList.add(authorityRunner);
+        authorityList.add(authorityAnonymous);
+
         User rfbUser = new User();
-        rfbUser.setId("11111");
+        rfbUser.setId("1111");
         rfbUser.setFirstName("Johnny");
         rfbUser.setLogin("johnny");
+        rfbUser.setEmail("johnny@runningforbrews.com");
         rfbUser.setActivated(true);
+        rfbUser.setAuthorities(authorityList);
         userRepository.save(rfbUser);
 
         //load data

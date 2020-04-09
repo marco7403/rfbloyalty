@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async, inject, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
     let fixture: ComponentFixture<UserManagementUpdateComponent>;
     let service: UserService;
     const route: ActivatedRoute = ({
-      data: of({ user: new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', [Authority.USER], 'admin') })
+      data: of({ user: new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', [Authority.RUNNER], 'admin') })
     } as any) as ActivatedRoute;
 
     beforeEach(async(() => {
@@ -46,14 +46,14 @@ describe('Component Tests', () => {
         [],
         fakeAsync(() => {
           // GIVEN
-          spyOn(service, 'authorities').and.returnValue(of(['USER']));
+          spyOn(service, 'authorities').and.returnValue(of(['RUNNER']));
 
           // WHEN
           comp.ngOnInit();
 
           // THEN
           expect(service.authorities).toHaveBeenCalled();
-          expect(comp.authorities).toEqual(['USER']);
+          expect(comp.authorities).toEqual(['RUNNER']);
         })
       ));
     });

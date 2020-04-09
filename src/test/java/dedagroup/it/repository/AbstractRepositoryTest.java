@@ -15,4 +15,7 @@ abstract class AbstractRepositoryTest {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    AuthorityRepository authorityRepository;
+
 }
