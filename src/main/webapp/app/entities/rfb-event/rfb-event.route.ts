@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
-import { Observable, of, EMPTY } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
 import { Authority } from 'app/shared/constants/authority.constants';
@@ -43,7 +43,7 @@ export const rfbEventRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.ORGANIZER],
       defaultSort: 'id,asc',
       pageTitle: 'RfbEvents'
     },
@@ -56,7 +56,7 @@ export const rfbEventRoute: Routes = [
       rfbEvent: RfbEventResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.ORGANIZER],
       pageTitle: 'RfbEvents'
     },
     canActivate: [UserRouteAccessService]
@@ -68,7 +68,7 @@ export const rfbEventRoute: Routes = [
       rfbEvent: RfbEventResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.ORGANIZER],
       pageTitle: 'RfbEvents'
     },
     canActivate: [UserRouteAccessService]
@@ -80,7 +80,7 @@ export const rfbEventRoute: Routes = [
       rfbEvent: RfbEventResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.ORGANIZER],
       pageTitle: 'RfbEvents'
     },
     canActivate: [UserRouteAccessService]
